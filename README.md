@@ -1,4 +1,4 @@
-# Grime Busters: complete landing page (V4)
+# Grease Busters: complete landing page (V4)
 
 A responsive, single-page website for Cape Town food truck cleaning. The original mascot logo and truck artwork are preserved. No build step, package installation, paid theme or external font is required.
 
@@ -8,7 +8,7 @@ Extract the ZIP and open `index.html` in a browser. Keep the `assets` folder and
 
 ## What is included
 
-- Who Grime Busters is and the family business roots in 2012.
+- Who Grease Busters is and the family business roots in 2012.
 - The new-generation relaunch, purpose and food-truck-only focus.
 - Basic, Standard and Deep cleaning packages with starting prices of R800, R1,200 and R1,800.
 - A pricing explanation covering the agreed cleaning price and separately confirmed call-out fee.
@@ -67,7 +67,7 @@ Only local files inside `assets/` are accepted. There is no blank or broken logo
 
 The business history and community involvement were written from the owner's account, not independently verified as business achievements. No donation amounts, beneficiary counts, event names, awards, testimonials, company-registration numbers, street addresses or nationwide service coverage were invented.
 
-The wording deliberately says the family business has roots in 2012. It does not claim that the Grime Busters brand was registered then or traded continuously since then.
+The wording deliberately says the family business has roots in 2012. It does not claim that the Grease Busters brand was registered then or traded continuously since then.
 
 Confirm the starting prices and package inclusions before publishing. They were carried forward from the previous drafts. The deposit examples apply to the starting cleaning prices before any call-out charge. Confirm your VAT position and wording separately; the website makes no VAT-registration claim.
 
