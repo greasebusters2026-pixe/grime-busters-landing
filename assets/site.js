@@ -82,7 +82,7 @@
 
   const cleanValue = (name) => String(new FormData(form).get(name) || '').trim();
   const message = () => [
-    'Hi Grime Busters, I would like to enquire about food truck cleaning.', '',
+    'Hi Grease Busters, I would like to enquire about food truck cleaning.', '',
     'Name: ' + cleanValue('name'),
     'Mobile: ' + cleanValue('phone'),
     ...(cleanValue('email') ? ['Email: ' + cleanValue('email')] : []),
@@ -117,7 +117,7 @@
     const body = message();
     const url = channel === 'whatsapp'
       ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(body)}`
-      : `mailto:${EMAIL}?subject=${encodeURIComponent('Food truck cleaning enquiry | Grime Busters')}&body=${encodeURIComponent(body)}`;
+      : `mailto:${EMAIL}?subject=${encodeURIComponent('Food truck cleaning enquiry | Grease Busters')}&body=${encodeURIComponent(body)}`;
     copyArea.value = body;
     fallback.hidden = false;
     status.replaceChildren();
@@ -155,7 +155,7 @@
   });
 
   // Optional external services. Only real HTTPS links on the stated providers are allowed.
-  const config = window.GRIME_BUSTERS_CONFIG || {};
+  const config = window.GREASE_BUSTERS_CONFIG || {};
   const links = document.getElementById('connected-links');
   const addExternal = (value, hosts, text) => {
     if (!value || !links) return;
