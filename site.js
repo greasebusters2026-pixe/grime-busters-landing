@@ -117,7 +117,7 @@
   function initialiseEnquiry() {
     const form = byId('enquiry-form');
     const requiredIds = ['customer-name', 'customer-phone', 'customer-email', 'truck-location',
-      'requirements', 'package', 'preferred-date', 'enquiry-status', 'message-fallback',
+      'requirements', 'package', 'preferred-date', 'business-name', 'project-reference', 'enquiry-status', 'message-fallback',
       'message-copy', 'copy-message', 'email-enquiry'];
     if (!form || requiredIds.some(id => !byId(id))) return;
     const name = byId('customer-name');
@@ -126,6 +126,8 @@
     const location = byId('truck-location');
     const requirements = byId('requirements');
     const chosenPackage = byId('package');
+    const business = byId('business-name');
+    const projectReference = byId('project-reference');
     const date = byId('preferred-date');
     const status = byId('enquiry-status');
     const fallback = byId('message-fallback');
@@ -142,7 +144,7 @@
       copyArea.value = '';
       copyButton.textContent = 'Copy message';
     };
-    [name, phone, email, location, requirements, chosenPackage, date].forEach(field => {
+    [name, phone, email, location, requirements, chosenPackage, date, business, projectReference].forEach(field => {
       const changed = () => {
         field.setCustomValidity('');
         field.removeAttribute('aria-invalid');
@@ -157,15 +159,17 @@
 
     const value = field => field.value.trim();
     const buildMessage = () => [
-      'Hi Grease Busters, I would like to enquire about food truck cleaning.', '',
+      'Hi Grease Busters, I would like to discuss a service or project.', '',
       'Name: ' + value(name),
       'Mobile: ' + value(phone),
       ...(value(email) ? ['Email: ' + value(email)] : []),
-      'Truck location: ' + value(location),
-      'Package: ' + value(chosenPackage),
+      'Site location: ' + value(location),
+      ...(value(business) ? ['Organisation: ' + value(business)] : []),
+      ...(value(projectReference) ? ['Project / PO reference: ' + value(projectReference)] : []),
+      'Service / enquiry: ' + value(chosenPackage),
       'Preferred date: ' + (value(date) || 'Flexible'), '',
-      'Cleaning requirements:', value(requirements), '',
-      'Please confirm the scope, total including the call-out fee, and availability before I pay a deposit.'
+      'Requested scope:', value(requirements), '',
+      'Please confirm delivery capability, scope, total costs, availability and applicable contract/payment terms before any work is booked.'
     ].join('\n');
 
     const prepare = channel => {
@@ -184,7 +188,7 @@
       const body = buildMessage();
       const url = channel === 'whatsapp'
         ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(body)}`
-        : `mailto:${EMAIL}?subject=${encodeURIComponent('Food truck cleaning enquiry | Grease Busters')}&body=${encodeURIComponent(body)}`;
+        : `mailto:${EMAIL}?subject=${encodeURIComponent('Service and project enquiry | Grease Busters')}&body=${encodeURIComponent(body)}`;
       copyArea.value = body;
       fallback.hidden = false;
       const notice = document.createElement('p');
@@ -219,7 +223,7 @@
     byId('email-enquiry').addEventListener('click', () => prepare('email'));
     form.addEventListener('reset', () => {
       clearPreparedMessage();
-      [name, phone, email, location, requirements, chosenPackage, date].forEach(field => {
+      [name, phone, email, location, requirements, chosenPackage, date, business, projectReference].forEach(field => {
         field.setCustomValidity(''); field.removeAttribute('aria-invalid');
       });
       refreshDate();
